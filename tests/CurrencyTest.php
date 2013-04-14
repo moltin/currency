@@ -25,8 +25,8 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
     {
 
         // Options
-        $start = 1;      // £0.01
-        $end   = 250000; // £2,500.00
+        $start = 1;       // £0.01
+        $end   = 1000000; // £10,000.00
 
         // Set to GBP
         $this->currency->setCurrency('GBP');
