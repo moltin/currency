@@ -7,6 +7,7 @@ class StorageInterface
 	{
 
 		$data = array(
+			'currency' => 'GBP',
 			'format'   => '&pound;{price}',
 			'decimal'  => '.',
 			'thousand' => ','

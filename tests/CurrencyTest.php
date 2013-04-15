@@ -5,41 +5,42 @@ use Moltin\Currency\Currency;
 class CurrencyTest extends \PHPUnit_Framework_TestCase
 {
 
-    protected $currency;
-
-    /**
-     * @covers Order::__construct
-     */
-    public function __construct()
-    {
-        // Setup storage interface
-        $storage = new \Moltin\Currency\StorageInterface();
-
-        // Spawn order
-        $this->currency = new \Moltin\Currency\Currency($storage);
-    }
+    protected $start = 1;      // £0.01
+    protected $end   = 350000; // £3,500.00
 
     # Format
-
-    public function testFormatCurrency()
+    public function testValue()
     {
+        // Loop and test
+        for ( $value = $this->start; $value <= $this->end; $value++ ) {
 
-        // Options
-        $start = 1;       // £0.01
-        $end   = 1000000; // £10,000.00
-
-        // Loop
-        for ( $i = $start; $i <= $end; $i++ ) {
-
-            // Variables
-            $base      = ( $i / 100 );
-            $formatted = $this->currency->set('value', $base)
-                                        ->currency();
+            // Setup
+            $storage  = new \Moltin\Currency\StorageInterface();
+            $currency = new \Moltin\Currency\Currency(array(
+                'store' => $storage,
+                'value' => $value
+            ));
 
             // Assert it
-            $this->assertEquals('&pound;'.number_format($base, 2), $formatted);
+            $this->assertEquals($value, $currency->value());
         }
+    }
 
+    public function testCurrency()
+    {
+        // Loop and test
+        for ( $value = $this->start; $value <= $this->end; $value++ ) {
+
+            // Setup
+            $storage  = new \Moltin\Currency\StorageInterface();
+            $currency = new \Moltin\Currency\Currency(array(
+                'store' => $storage,
+                'value' => $value
+            ));
+
+            // Assert it
+            $this->assertEquals('&pound;'.number_format($value, 2), $currency->currency());
+        }
     }
 
 }

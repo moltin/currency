@@ -1,58 +1,94 @@
 <?php namespace Moltin\Currency;
 
-class Currency extends Format
+class Currency
 {
+
     protected $store;
-	protected $fields = array();
+	protected $value    = 0;
+	protected $currency = 'GBP';
+	protected $format   = '&pound;{price}';
+	protected $decimal  = '.';
+	protected $thousand = ',';
 
-	public function __construct(StorageInterface $store)
+	public function __construct($args)
 	{
-		// Set storage interface
-        $this->store = $store;
+		// Get and loop arguments
+		foreach ( $args as $key => $value ) {
+			if ( isset($this->$key) ) {
+				$this->$key = $value;
+			}
+		}
+	}
 
-        // Set initial currency
-        $this->setCurrency();
-    }
-
-	public function setCurrency($code = 'GBP')
+	public function convert($code = 'GBP')
 	{
-
 		// Get selected currency
 		if ( $currency = $this->store->get($code) ) {
-			$this->set($currency);
+
+			// TODO: This part
+
 		}
 
 		return $this;
 	}
 
-    public function get($property)
-    {
+	public function value()
+	{
+		return $this->value;
+	}
 
-    	// Found
-        if ( isset($this->fields[$property]) ) {
-        	return $this->fields[$property];
-        }
+	public function currency()
+	{
+		// Variables
+		$value    = $this->value;
+		$format   = $this->format;
+		$decimal  = $this->decimal;
+		$thousand = $this->thousand;
 
-        // Nothing found
-        return;
-    }
-       
-    public function set($property, $value = null)
-    {
-    	// Multiple assignments
-		if ( is_array($property) ) {
+		// Format
+		$formatted = number_format($value, 2, $decimal, $thousand);
+		$formatted = str_replace('{price}', $formatted, $format);
 
-			// Loop and assign
-			foreach ( $property as $key => $value ) {
-				$this->fields[$key] = $value;
-			}
+		return $formatted;
+	}
 
-		// Single
-		} else {
-			$this->fields[$property] = $value;
-		}
+	public function zeros()
+	{
+		// Variables
+		$value   = $this->value;
+		$decimal = $this->decimal;
 
-		return $this;
-    }
+		// Format
+		$formatted = ceil($value).$decimal.'00';
+		$formatted = number_format($value, 2, $decimal, false);
+
+		return $formatted;
+	}
+
+	public function nines()
+	{
+		// Variables
+		$value   = $this->value;
+		$decimal = $this->decimal;
+
+		// Format
+		$formatted = ceil($value) - 0.01;
+		$formatted = number_format($value, 2, $decimal, false);
+
+		return $formatted;
+	}
+
+	public function fifty()
+	{
+		// Variables
+		$value   = $this->value;
+		$decimal = $this->decimal;
+
+		// Format
+		$formatted = ( round(( $value * 2 ), 0) / 2 );
+		$formatted = number_format($value, 2, $decimal, false);
+
+		return $formatted;
+	}
 
 }
