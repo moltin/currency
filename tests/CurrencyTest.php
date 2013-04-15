@@ -28,16 +28,13 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
         $start = 1;       // £0.01
         $end   = 1000000; // £10,000.00
 
-        // Set to GBP
-        $this->currency->setCurrency('GBP');
-
         // Loop
         for ( $i = $start; $i <= $end; $i++ ) {
 
             // Variables
             $base      = ( $i / 100 );
             $formatted = $this->currency->set('value', $base)
-                                        ->formatCurrency();
+                                        ->currency();
 
             // Assert it
             $this->assertEquals('&pound;'.number_format($base, 2), $formatted);
