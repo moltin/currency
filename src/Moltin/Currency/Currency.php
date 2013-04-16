@@ -20,9 +20,13 @@
 
 namespace Moltin\Currency;
 
+use Moltin\Currency\Exception\CurrencyException;
+use Moltin\Currency\Exception\ExchangeException;
+
 class Currency
 {
 
+    protected $store;
     protected $value    = 0;
     protected $currency = 'GBP';
     protected $format   = '&pound;{price}';

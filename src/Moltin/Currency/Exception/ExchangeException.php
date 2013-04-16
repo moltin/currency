@@ -18,12 +18,12 @@
  *
  */
 
-namespace Moltin\Currency\Exchange;
+namespace Moltin\Currency\Exception;
 
-use Moltin\Currency\Exception\CurrencyException;
-use Moltin\Currency\Exception\ExchangeException;
-
-class Exchange implements ExchangeInterface
+/**
+* Thrown when an error occurs in Exhange.
+*/
+class ExchangeException extends \Exception
 {
 
 
