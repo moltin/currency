@@ -1,12 +1,20 @@
 {
     "name": "moltin/currency",
+    "version": "0.1.1-dev",
     "description": "Currency conversion and formatting",
     "authors": [
         {
             "name": "Moltin Ltd",
-            "email": "support@molt.in"
+            "email": "support@molt.in",
+            "homepage": "http://molt.in",
+            "role": "Vendor"
         }
     ],
+    "support": {
+        "email": "support@molt.in",
+        "issues": "http://github.com/moltin/currency/issues",
+        "source": "http://github.com/moltin/currency"
+    }
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0"
