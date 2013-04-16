@@ -15,11 +15,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
         for ( $value = $this->start; $value <= $this->end; $value++ ) {
 
             // Setup
-            $storage  = new \Moltin\Currency\StorageInterface();
-            $currency = new \Moltin\Currency\Currency(array(
-                'store' => $storage,
-                'value' => $value
-            ));
+            $currency = new \Moltin\Currency\Currency(array('value' => $value));
 
             // Assert it
             $this->assertEquals($value, $currency->value());
@@ -32,11 +28,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
         for ( $value = $this->start; $value <= $this->end; $value++ ) {
 
             // Setup
-            $storage  = new \Moltin\Currency\StorageInterface();
-            $currency = new \Moltin\Currency\Currency(array(
-                'store' => $storage,
-                'value' => $value
-            ));
+            $currency = new \Moltin\Currency\Currency(array('value' => $value));
 
             // Assert it
             $this->assertEquals('&pound;'.number_format($value, 2), $currency->currency());

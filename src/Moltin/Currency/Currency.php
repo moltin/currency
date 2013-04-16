@@ -9,7 +9,6 @@ namespace Moltin\Currency;
 class Currency
 {
 
-    protected $store;
     protected $value    = 0;
     protected $currency = 'GBP';
     protected $format   = '&pound;{price}';

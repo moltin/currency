@@ -1,4 +1,4 @@
-# Moltin Currency
+# Currency Formatting and Conversion
 
 [![Build Status](https://secure.travis-ci.org/moltin/currency.png?branch=master)](https://travis-ci.org/moltin/currency)
 
