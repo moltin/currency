@@ -1,8 +1,12 @@
 <?php
 
+/**
+ *
+ */
+
 namespace Moltin\Currency;
 
-interface StorageInterface
+interface ExchangeInterface
 {
     public function get($code);
 
