@@ -22,7 +22,7 @@ namespace Moltin\Currency\Storage;
 
 use Moltin\Currency\Exception\StorageException;
 
-class File implements \Moltin\Currency\StorageInterface
+class Array implements \Moltin\Currency\StorageInterface
 {
     public function get($code) {
 

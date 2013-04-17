@@ -18,39 +18,14 @@
  *
  */
 
-namespace Moltin\Currency\Storage;
+namespace Moltin\Currency\Exception;
 
-use Moltin\Currency\Exception\StorageException;
-
-class File implements \Moltin\Currency\StorageInterface
+/**
+* Thrown when an error occurs in Exhange.
+*/
+class StorageException extends \Exception
 {
-    public function get($code) {
 
-    	// TODO
 
-    }
 
-    public function insertUpdate($id, $data) {
-
-    	// TODO
-
-    }
-
-    public function remove($id) {
-
-    	// TODO
-
-    }
-
-    public function setIdentifier($identifier) {
-
-    	// TODO
-
-    }
-
-    public function getIdentifier($identifier) {
-
-    	// TODO
-
-    }
 }

@@ -20,7 +20,9 @@
 
 namespace Moltin\Currency\Storage;
 
-class Database implements \Moltin\Currency\StorageInterface
+use Moltin\Currency\Exception\StorageException;
+
+class MySQL implements \Moltin\Currency\StorageInterface
 {
     public function get($code) {
 
