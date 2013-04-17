@@ -14,7 +14,7 @@
         "email": "support@molt.in",
         "issues": "http://github.com/moltin/currency/issues",
         "source": "http://github.com/moltin/currency"
-    }
+    },
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0"
