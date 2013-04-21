@@ -18,39 +18,9 @@
  *
  */
 
-namespace Moltin\Currency\Storage;
+namespace Moltin\Currency;
 
-use Moltin\Currency\Exception\StorageException;
-
-class Array implements \Moltin\Currency\StorageInterface
+interface CurrenciesInterface
 {
-    public function get($code) {
-
-    	// TODO
-
-    }
-
-    public function insertUpdate($id, $data) {
-
-    	// TODO
-
-    }
-
-    public function remove($id) {
-
-    	// TODO
-
-    }
-
-    public function setIdentifier($identifier) {
-
-    	// TODO
-
-    }
-
-    public function getIdentifier($identifier) {
-
-    	// TODO
-
-    }
+    public function get($code);
 }

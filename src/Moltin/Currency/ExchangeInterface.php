@@ -22,13 +22,11 @@ namespace Moltin\Currency;
 
 interface ExchangeInterface
 {
+    public function __construct(StorageInterface $store, CurrenciesInterface $currencies, $args = array());
+    
+    public function update();
+
     public function get($code);
 
-    public function insertUpdate($id, $data);
-
-    public function remove($id);
-
-    public function setIdentifier($identifier);
-
-    public function getIdentifier($identifier);
+    public function convert($from, $to, $value);
 }

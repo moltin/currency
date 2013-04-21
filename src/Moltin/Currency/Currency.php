@@ -26,29 +26,50 @@ use Moltin\Currency\Exception\ExchangeException;
 class Currency
 {
 
-    protected $store;
-    protected $value    = 0;
-    protected $currency = 'GBP';
-    protected $format   = '&pound;{price}';
-    protected $decimal  = '.';
-    protected $thousand = ',';
+    protected $exchange;
+    protected $original =  0;
+    protected $value    =  0;
+    protected $data     =  array(
+        'currency'      => 'GBP',
+        'format'        => '&pound;{price}',
+        'decimal'       => '.',
+        'thousand'      => ','
+    );
 
-    public function __construct($args)
+    public function __construct(ExchangeInterface $exchange, $value, $args = null)
     {
-        // Get and loop arguments
-        foreach ( $args as $key => $value ) {
-            if ( isset($this->$key) ) {
-                $this->$key = $value;
+        // Assign exchange
+        $this->exchange = $exchange;
+
+        // Assign values
+        $this->value    = $value;
+        $this->original = $value;
+
+        // Loop and assign arguments
+        if ( $args !== null and is_array($args) ) {
+            foreach ( $args as $key => $value ) {
+                if ( isset($this->data[$key]) ) { $this->data[$key] = $value; }
             }
         }
     }
 
     public function convert($code)
     {
-        // Get selected currency
-        if ( $currency = $this->store->get($code) ) {
+        // Variables
+        $value    = $this->value;
+        $currency = $this->data['currency'];
 
-            // TODO: This part
+        // Get selected currency
+        if ( $currency = $this->exchange->convert($currency, $code, $value) ) {
+
+            // Assign new values
+            $this->value   =  $currency['value'];
+            $this->data    =  array(
+                'currency' => $code,
+                'format'   => $currency['format'],
+                'decimal'  => $currency['decimal'],
+                'thousand' => $currency['thousand']
+            );
 
         }
 
@@ -64,9 +85,9 @@ class Currency
     {
         // Variables
         $value    = $this->value;
-        $format   = $this->format;
-        $decimal  = $this->decimal;
-        $thousand = $this->thousand;
+        $format   = $this->data['format'];
+        $decimal  = $this->data['decimal'];
+        $thousand = $this->data['thousand'];
 
         // Format
         $formatted = number_format($value, 2, $decimal, $thousand);
@@ -79,7 +100,7 @@ class Currency
     {
         // Variables
         $value   = $this->value;
-        $decimal = $this->decimal;
+        $decimal = $this->data['decimal'];
 
         // Format
         $formatted = ceil($value).$decimal.'00';
@@ -92,7 +113,7 @@ class Currency
     {
         // Variables
         $value   = $this->value;
-        $decimal = $this->decimal;
+        $decimal = $this->data['decimal'];
 
         // Format
         $formatted = ceil($value) - 0.01;
@@ -105,13 +126,23 @@ class Currency
     {
         // Variables
         $value   = $this->value;
-        $decimal = $this->decimal;
+        $decimal = $this->data['decimal'];
 
         // Format
         $formatted = ( round(( $value * 2 ), 0) / 2 );
         $formatted = number_format($value, 2, $decimal, false);
 
         return $formatted;
+    }
+
+    public function reset()
+    {
+        $this->value = $this->original;
+    }
+
+    public function setExchange(ExchangeInterface $exchange)
+    {
+        $this->exchange = $exchange;
     }
 
 }

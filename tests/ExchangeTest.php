@@ -2,7 +2,7 @@
 
 use Moltin\Currency\Currency;
 
-class CurrencyTest extends \PHPUnit_Framework_TestCase
+class ExchangeTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $exchagnge;
@@ -15,12 +15,17 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
         // Create required objects
         $store          = new \Moltin\Currency\Storage\Session();
         $currencies     = new \Moltin\Currency\Currencies\File();
-        $this->exchange = new \Moltin\Currency\Exchange\OpenExchangeRates($store, $currencies, array('base' => 'GBP', 'app_id' => ''));
+        $this->exchange = new \Moltin\Currency\Exchange\OpenExchangeRates($store, $currencies, array('base' => 'GBP', 'app_id' => '8fc03975a2324ca4b20cae70e987b706'));
+
+        // Pull down rates
+        $this->exchange->update();
     }
 
-    # Format
-    public function testValue()
+    public function testGBPtoUSD()
     {
+        // Variables
+        $rate = $this->exchange->get('USD');
+
         // Loop and test
         for ( $i = 0; $i < $this->tests; $i++ ) {
 
@@ -31,12 +36,15 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             $currency = new \Moltin\Currency\Currency($this->exchange, $value);
 
             // Assert it
-            $this->assertEquals($value, $currency->value());
+            $this->assertEquals(( $value * $rate ), $currency->convert('USD')->value());
         }
     }
 
-    public function testCurrency()
+    public function testGBPtoUSDCurrency()
     {
+        // Variables
+        $rate = $this->exchange->get('USD');
+
         // Loop and test
         for ( $i = 0; $i < $this->tests; $i++ ) {
 
@@ -47,7 +55,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             $currency = new \Moltin\Currency\Currency($this->exchange, $value);
 
             // Assert it
-            $this->assertEquals('&pound;'.number_format($value, 2), $currency->currency());
+            $this->assertEquals('$'.number_format(( $value * $rate ), 2), $currency->convert('USD')->currency());
         }
     }
 
