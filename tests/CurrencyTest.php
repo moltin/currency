@@ -1,6 +1,9 @@
 <?php
 
 use Moltin\Currency\Currency;
+use Moltin\Currency\Storage\Session as SessionStore;
+use Moltin\Currency\Currencies\File as FileCurrencies;
+use Moltin\Currency\Exchange\File as FileExchange;
 
 class CurrencyTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,12 +13,14 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
     protected $start = 1;       // £0.01
     protected $end   = 1000000; // £10,000.00
 
-    public function __construct()
+    public function setUp()
     {
-        // Create required objects
-        $store          = new \Moltin\Currency\Storage\Session();
-        $currencies     = new \Moltin\Currency\Currencies\File();
-        $this->exchange = new \Moltin\Currency\Exchange\OpenExchangeRates($store, $currencies, array('base' => 'GBP', 'app_id' => ''));
+        $this->exchange = new FileExchange(new SessionStore, new FileCurrencies, array('base' => 'GBP', 'app_id' => ''));
+    }
+
+    public function tearDown()
+    {
+        $this->exchange = null;
     }
 
     # Format

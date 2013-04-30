@@ -106,7 +106,10 @@ class Currency
         $formatted = ceil($value).$decimal.'00';
         $formatted = number_format($value, 2, $decimal, false);
 
-        return $formatted;
+        // Assign it
+        $this->value = $formatted;
+
+        return $this;
     }
 
     public function nines()
@@ -119,7 +122,10 @@ class Currency
         $formatted = ceil($value) - 0.01;
         $formatted = number_format($value, 2, $decimal, false);
 
-        return $formatted;
+        // Assign it
+        $this->value = $formatted;
+
+        return $this;
     }
 
     public function fifty()
@@ -132,12 +138,16 @@ class Currency
         $formatted = ( round(( $value * 2 ), 0) / 2 );
         $formatted = number_format($value, 2, $decimal, false);
 
-        return $formatted;
+        // Assign it
+        $this->value = $formatted;
+
+        return $this;
     }
 
     public function reset()
     {
         $this->value = $this->original;
+        return $this;
     }
 
     public function setExchange(ExchangeInterface $exchange)
