@@ -1,6 +1,6 @@
 {
     "name": "moltin/currency",
-    "version": "0.1.1-dev",
+    "version": "dev",
     "description": "Currency conversion and formatting",
     "authors": [
         {

@@ -13,7 +13,7 @@
  * @package moltin/currency
  * @author Jamie Holdroyd <jamie@molt.in>
  * @copyright 2013 Moltin Ltd.
- * @version 0.1.1-dev
+ * @version dev
  * @link http://github.com/moltin/currency
  *
  */

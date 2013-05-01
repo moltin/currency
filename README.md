@@ -10,6 +10,26 @@ The Moltin currency composer package makes it easy to implement multi-currency p
 store the exchange data using one of the numerous data stores provided. You can also inject your own data store if you
 would like your data to be stored elsewhere.
 
+## Installation
+Download and install composer from `http://www.getcomposer.org/download`
+
+Add the following to your project `composer.json` file
+```
+{
+    "require": {
+        "moltin/currency": "dev-master"
+    }
+}
+```
+When you're done just run `php composer install` and the package is ready to be used.
+
+### Overriding the config
+Overriding the default configurations is done in a published config file. You can create it by typing:
+
+```
+$ php artisan config:publish moltin/currency
+```
+
 ## Usage
 Below is a basic usage guide for this package.
 

@@ -18,15 +18,10 @@
  *
  */
 
-namespace Moltin\Currency;
+namespace Moltin\Currency\Config;
 
-interface ExchangeInterface
-{
-    public function __construct(StorageInterface $store, CurrenciesInterface $currencies, $args = array());
-    
-    public function update();
+return array(
 
-    public function get($code);
+	
 
-    public function convert($from, $to, $value);
-}
+);
