@@ -154,5 +154,10 @@ class Currency
     {
         $this->exchange = $exchange;
     }
+    
+    public function __get($property)
+    {
+        return $this->data[$property];
+    }
 
 }
