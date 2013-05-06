@@ -30,10 +30,10 @@ class Currency
     protected $original =  0;
     protected $value    =  0;
     protected $data     =  array(
-        'currency'      => 'GBP',
-        'format'        => '&pound;{price}',
-        'decimal'       => '.',
-        'thousand'      => ','
+        'code'     => 'GBP',
+        'format'   => '&pound;{price}',
+        'decimal'  => '.',
+        'thousand' => ','
     );
 
     public function __construct(ExchangeInterface $exchange, $value, $args = null)
@@ -57,7 +57,7 @@ class Currency
     {
         // Variables
         $value    = $this->value;
-        $currency = $this->data['currency'];
+        $currency = $this->data['code'];
 
         // Get selected currency
         if ( $currency = $this->exchange->convert($currency, $code, $value) ) {
@@ -65,7 +65,7 @@ class Currency
             // Assign new values
             $this->value   =  $currency['value'];
             $this->data    =  array(
-                'currency' => $code,
+                'code'     => $code,
                 'format'   => $currency['format'],
                 'decimal'  => $currency['decimal'],
                 'thousand' => $currency['thousand']
