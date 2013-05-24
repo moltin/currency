@@ -53,10 +53,18 @@ class Currency
         }
     }
 
-    public function convert($value, $code)
+    public function convert($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    public function to($code)
     {
         // Variables
         $currency = $this->data['code'];
+        $value    = $this->value;
 
         // Get selected currency
         if ( $currency = $this->exchange->convert($currency, $code, $value) ) {
