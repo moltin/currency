@@ -83,7 +83,7 @@ class Currency
         return $this;
     }
 
-    public function currency()
+    public function format()
     {
         // Variables
         $value    = $this->value;
