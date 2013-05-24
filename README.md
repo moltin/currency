@@ -47,7 +47,15 @@ use Moltin\Currency\Currencies\File as FileCurrencies;
 use Moltin\Currency\Exchange\File as FileExchange;
 
 $exchange = new FileExchange(new SessionStore, new FileCurrencies, array('base' => 'GBP'));
-$currency = new Currency($exchange, 9.33);
+$currency = new Currency($exchange);
+```
+
+### Setting the value
+Now that you have Currency instantiated, you will now need to tell it what value you would like to convert.
+You can do this using the following method.
+
+```php
+$currency->convert(9.33);
 ```
 
 ### Getting the value
@@ -64,7 +72,7 @@ decimal and thousand seperators.
 
 ```php
 // Returns £9.33
-$value = $currency->currency();
+$value = $currency->format();
 ```
 
 ### Rounding to common values
@@ -82,7 +90,7 @@ $currency->nines();
 $currency->fifty();
 
 // Returns £9.50
-$value = $currency->fifty()->currency();
+$value = $currency->fifty()->format();
 ```
 
 ### Currency Exchange
@@ -91,10 +99,10 @@ is reset to default to ensure the correct price is assigned.
 
 ```php
 // Returns ~$14.47
-$value = $currency->convert('USD')->currency();
+$value = $currency->convert(9.33)->to('USD')->format();
 
 // Returns ~14.50
-$value = $currency->convert('USD')->fifty();
+$value = $currency->convert(9.33)->to('USD')->fifty()->value();
 ```
 
 ### Resetting the value
