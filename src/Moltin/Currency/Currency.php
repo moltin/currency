@@ -190,4 +190,9 @@ class Currency
         return $this->data[$property];
     }
 
+    public function __toString()
+    {
+        return $this->format();
+    }
+
 }
