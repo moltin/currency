@@ -166,6 +166,15 @@ class Currency
     {
         $this->exchange = $exchange;
     }
+
+    public function setCurrency(array $currency)
+    {
+        foreach ($currency as $key => $value) {
+
+            if (isset($this->data[$key])) $this->data[$key] = $value;
+
+        }
+    }
     
     public function __get($property)
     {
