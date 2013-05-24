@@ -119,7 +119,7 @@ class Currency
         $formatted = number_format($formatted, 2, $decimal, false);
 
         // Assign it
-        $this->value = $formatted;
+        $this->value = (float)$formatted;
 
         return $this;
     }
@@ -135,7 +135,7 @@ class Currency
         $formatted = number_format($formatted, 2, $decimal, false);
 
         // Assign it
-        $this->value = $formatted;
+        $this->value = (float)$formatted;
 
         return $this;
     }
@@ -151,7 +151,7 @@ class Currency
         $formatted = number_format($formatted, 2, $decimal, false);
 
         // Assign it
-        $this->value = $formatted;
+        $this->value = (float)$formatted;
 
         return $this;
     }
