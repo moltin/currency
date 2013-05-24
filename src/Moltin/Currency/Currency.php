@@ -42,10 +42,14 @@ class Currency
         $this->exchange = $exchange;
 
         // Loop and assign arguments
-        if ( $args !== null and is_array($args) ) {
-            foreach ( $args as $key => $value ) {
-                if ( isset($this->data[$key]) ) { $this->data[$key] = $value; }
+        if ($args) {
+            
+            foreach ($args as $key => $value) {
+
+                if (isset($this->data[$key])) $this->data[$key] = $value;
+
             }
+            
         }
     }
 
