@@ -34,7 +34,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
             $value = ( rand($this->start, $this->end) / 100 );
 
             // Setup
-            $currency = new \Moltin\Currency\Currency($this->exchange, $value);
+            $currency = new Currency($this->exchange, $value);
 
             // Assert it
             $this->assertEquals(( $value * $rate ), $currency->convert('USD')->value());
@@ -53,7 +53,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
             $value = ( rand($this->start, $this->end) / 100 );
 
             // Setup
-            $currency = new \Moltin\Currency\Currency($this->exchange, $value);
+            $currency = new Currency($this->exchange, $value);
 
             // Assert it
             $this->assertEquals('$'.number_format(( $value * $rate ), 2), $currency->convert('USD')->currency());
