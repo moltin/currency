@@ -76,11 +76,6 @@ class Currency
         return $this;
     }
 
-    public function value()
-    {
-        return $this->value;
-    }
-
     public function currency()
     {
         // Variables
@@ -157,6 +152,10 @@ class Currency
     
     public function __get($property)
     {
+        if (in_array($property, array('value', 'original'))) {
+            return $this->$property;
+        }
+
         return $this->data[$property];
     }
 
