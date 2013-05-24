@@ -43,20 +43,19 @@ class Currency
 
         // Loop and assign arguments
         if ($args) {
-            
+
             foreach ($args as $key => $value) {
 
                 if (isset($this->data[$key])) $this->data[$key] = $value;
 
             }
-            
+
         }
     }
 
-    public function convert($code)
+    public function convert($value, $code)
     {
         // Variables
-        $value    = $this->value;
         $currency = $this->data['code'];
 
         // Get selected currency
