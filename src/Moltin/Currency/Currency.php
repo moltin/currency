@@ -106,7 +106,7 @@ class Currency
 
         // Format
         $formatted = ceil($value).$decimal.'00';
-        $formatted = number_format($value, 2, $decimal, false);
+        $formatted = number_format($formatted, 2, $decimal, false);
 
         // Assign it
         $this->value = $formatted;
@@ -122,7 +122,7 @@ class Currency
 
         // Format
         $formatted = ceil($value) - 0.01;
-        $formatted = number_format($value, 2, $decimal, false);
+        $formatted = number_format($formatted, 2, $decimal, false);
 
         // Assign it
         $this->value = $formatted;
@@ -138,7 +138,7 @@ class Currency
 
         // Format
         $formatted = ( round(( $value * 2 ), 0) / 2 );
-        $formatted = number_format($value, 2, $decimal, false);
+        $formatted = number_format($formatted, 2, $decimal, false);
 
         // Assign it
         $this->value = $formatted;
