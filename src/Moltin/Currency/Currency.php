@@ -36,14 +36,10 @@ class Currency
         'thousand' => ','
     );
 
-    public function __construct(ExchangeInterface $exchange, $value, $args = null)
+    public function __construct(ExchangeInterface $exchange, $args = null)
     {
         // Assign exchange
         $this->exchange = $exchange;
-
-        // Assign values
-        $this->value    = $value;
-        $this->original = $value;
 
         // Loop and assign arguments
         if ( $args !== null and is_array($args) ) {
