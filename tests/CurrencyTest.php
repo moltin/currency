@@ -33,7 +33,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             $value = ( rand($this->start, $this->end) / 100 );
 
             // Setup
-            $currency = new \Moltin\Currency\Currency($this->exchange, $value);
+            $currency = new Currency($this->exchange, $value);
 
             // Assert it
             $this->assertEquals($value, $currency->value());
@@ -49,7 +49,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             $value = ( rand($this->start, $this->end) / 100 );
 
             // Setup
-            $currency = new \Moltin\Currency\Currency($this->exchange, $value);
+            $currency = new Currency($this->exchange, $value);
 
             // Assert it
             $this->assertEquals('&pound;'.number_format($value, 2), $currency->currency());
