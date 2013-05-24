@@ -108,6 +108,11 @@ class Currency
         return $this->original;
     }
 
+    public function currency()
+    {
+        return $this->data;
+    }
+
     public function zeros()
     {
         // Variables
