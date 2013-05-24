@@ -174,6 +174,10 @@ class Currency
             if (isset($this->data[$key])) $this->data[$key] = $value;
 
         }
+
+        $this->reset();
+
+        return $this;
     }
     
     public function __get($property)
