@@ -103,6 +103,11 @@ class Currency
         return $this->value;
     }
 
+    public function original()
+    {
+        return $this->original;
+    }
+
     public function zeros()
     {
         // Variables
