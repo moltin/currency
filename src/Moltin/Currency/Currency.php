@@ -98,6 +98,11 @@ class Currency
         return $formatted;
     }
 
+    public function value()
+    {
+        return $this->value;
+    }
+
     public function zeros()
     {
         // Variables
