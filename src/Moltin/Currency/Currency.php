@@ -54,11 +54,15 @@ class Currency
         }
     }
 
-    public function convert($value)
+    public function convert($value, $new = true)
     {
-        $this->value = $value;
+        $clone = $this;
 
-        return $this;
+        if ($new) $clone = clone $this;
+
+        $clone->value = $value;
+
+        return $clone;
     }
 
     public function to($code)
