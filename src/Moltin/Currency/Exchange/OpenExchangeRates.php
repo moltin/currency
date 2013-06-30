@@ -40,7 +40,7 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 	public function update()
 	{
 		// Variables
-		$json = $this->_download();
+		$json = $this->download();
 		$base = $this->data['base'];
 
 		// Loop and store
@@ -95,7 +95,7 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
         );
 	}
 
-	public function _download()
+	protected function download()
 	{
 
 		// Variables
