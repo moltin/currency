@@ -28,9 +28,6 @@ use Moltin\Currency\Exception\ExchangeException;
 
 class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
 {
-
-	protected $store;
-	protected $currencies;
 	protected $url  =  'http://openexchangerates.org/api/latest.json?app_id=';
 	protected $data =  array(
 		'base'      => 'GBP',
