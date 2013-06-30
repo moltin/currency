@@ -37,4 +37,9 @@ class ExchangeAbstract
             if (isset($this->data[$key])) $this->data[$key] = $value;
         }
     }
+
+    public function get($code)
+    {
+        return $this->store->get($code);
+    }
 }

@@ -65,11 +65,6 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 		return $this;
 	}
 
-	public function get($code)
-	{
-		return $this->store->get($code);
-	}
-
 	public function convert($from, $to, $value)
 	{
 

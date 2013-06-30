@@ -40,11 +40,6 @@ class File extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterfac
 		return $this;
 	}
 
-	public function get($code)
-	{
-		return $this->store->get($code);
-	}
-
 	public function convert($from, $to, $value)
 	{
 
