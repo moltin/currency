@@ -45,11 +45,6 @@ class File extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterfac
         $this->store->insertUpdate('USD', 1.551257); 
     }
 
-	public function update()
-	{
-		return $this;
-	}
-
 	public function convert($from, $to, $value)
 	{
 

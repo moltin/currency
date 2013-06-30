@@ -40,4 +40,9 @@ abstract class ExchangeAbstract
             if (isset($this->data[$key])) $this->data[$key] = $value;
         }
     }
+
+    public function update()
+    {
+        return $this;
+    }
 }
