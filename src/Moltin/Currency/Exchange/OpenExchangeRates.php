@@ -23,7 +23,6 @@ namespace Moltin\Currency\Exchange;
 
 use Moltin\Currency\StorageInterface;
 use Moltin\Currency\CurrenciesInterface;
-use Moltin\Currency\Exception\CurrencyException;
 use Moltin\Currency\Exception\ExchangeException;
 
 class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
@@ -92,7 +91,7 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 
         // Check key
         if ( ! isset($this->data['app_id']) or $this->data['app_id'] == '') {
-        	throw new CurrencyException('No App ID Set');
+        	throw new ExchangeException('No App ID Set');
         }
 
         // Get data
@@ -105,7 +104,7 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
         $json = json_decode($data);
 
         // Error check
-        if (isset($json->error)) throw new CurrencyException($json->error);
+        if (isset($json->error)) throw new ExchangeException($json->error);
 
         return $json;
 	}
