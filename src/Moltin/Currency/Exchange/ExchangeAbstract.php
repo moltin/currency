@@ -45,4 +45,9 @@ abstract class ExchangeAbstract
     {
         return $this;
     }
+
+    public function get($code)
+    {
+        return $this->store->get($code);
+    }
 }

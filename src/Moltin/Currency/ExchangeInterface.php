@@ -25,6 +25,8 @@ interface ExchangeInterface
 {
     public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array());
 
+    public function get($code);
+
     public function update();
 
     public function convert($from, $to, $value);
