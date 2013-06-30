@@ -42,7 +42,7 @@ class OpenExchangeRates implements \Moltin\Currency\ExchangeInterface
 		$this->currencies = $currencies;
 
         // Loop and assign arguments
-        if ($args !== null and is_array($args)) {
+        if (is_array($args)) {
             foreach ($args as $key => $value) {
                 if (isset($this->data[$key])) $this->data[$key] = $value;
             }
