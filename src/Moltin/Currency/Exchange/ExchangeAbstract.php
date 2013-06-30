@@ -26,6 +26,9 @@ use Moltin\Currency\CurrenciesInterface;
 
 abstract class ExchangeAbstract
 {
+    protected $store;
+    protected $currencies;
+    
     public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array())
     {
         // Assign variables
