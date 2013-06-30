@@ -28,22 +28,22 @@ use Moltin\Currency\Exception\ExchangeException;
 
 class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
 {
-	protected $url  =  'http://openexchangerates.org/api/latest.json?app_id={app_id}';
-	protected $data =  array(
-		'base'      => 'GBP',
-		'app_id'    => ''
-	);
+    protected $url  =  'http://openexchangerates.org/api/latest.json?app_id={app_id}';
+    protected $data =  array(
+        'base'      => 'GBP',
+        'app_id'    => ''
+    );
 
-	public function update()
-	{
-		// Variables
-		$json = $this->download();
-		$base = $this->data['base'];
+    public function update()
+    {
+        // Variables
+        $json = $this->download();
+        $base = $this->data['base'];
 
-		// Loop and store
-		foreach ($json['rates'] as $code => $rate)
-		{
-			// Check we need this
+        // Loop and store
+        foreach ($json['rates'] as $code => $rate)
+        {
+            // Check we need this
             if ( ! array_key_exists($code, $this->currencies->available)) continue;
 
             // Multiplier
@@ -57,39 +57,39 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 
             // Store
             $this->store->insertUpdate($code, $multi);
-		}
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function convert($from, $to, $value)
-	{
-		// Variables
-		$currency = $this->currencies->get($to);
-		$frate    = $this->get($from);
-		$trate    = $this->get($to);
-		$base     = $this->data['base'];
+    public function convert($from, $to, $value)
+    {
+        // Variables
+        $currency = $this->currencies->get($to);
+        $frate    = $this->get($from);
+        $trate    = $this->get($to);
+        $base     = $this->data['base'];
 
-		// Cross conversion
-		if ($from != $base) {
+        // Cross conversion
+        if ($from != $base) {
             $new   = $trate * ( 1 / $frate );
             $trate = round($new, 6);
         }
 
-		// Return formatted value
+        // Return formatted value
         return array(
-        	'value'    => $value * $trate,
-        	'format'   => $currency['format'],
-        	'decimal'  => $currency['decimal'],
-        	'thousand' => $currency['thousand']
+            'value'    => $value * $trate,
+            'format'   => $currency['format'],
+            'decimal'  => $currency['decimal'],
+            'thousand' => $currency['thousand']
         );
-	}
+    }
 
-	protected function download()
-	{
+    protected function download()
+    {
         // Check key
         if ( ! isset($this->data['app_id']) or $this->data['app_id'] == '') {
-        	throw new ExchangeException('No App ID Set');
+            throw new ExchangeException('No App ID Set');
         }
 
         $request = new Client($this->url, array(
@@ -102,6 +102,6 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
         if (isset($json['error'])) throw new ExchangeException($json['error']);
 
         return $json;
-	}
+    }
 
 }

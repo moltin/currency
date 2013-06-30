@@ -28,9 +28,9 @@ use Moltin\Currency\Exception\ExchangeException;
 
 class File extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
 {
-	protected $data =  array(
-		'base'      => 'GBP'
-	);
+    protected $data =  array(
+        'base'      => 'GBP'
+    );
 
     public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array())
     {
@@ -42,27 +42,27 @@ class File extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterfac
         $this->store->insertUpdate('USD', 1.551257); 
     }
 
-	public function convert($from, $to, $value)
-	{
-		// Variables
-		$currency = $this->currencies->get($to);
-		$frate    = $this->get($from);
-		$trate    = $this->get($to);
-		$base     = $this->data['base'];
+    public function convert($from, $to, $value)
+    {
+        // Variables
+        $currency = $this->currencies->get($to);
+        $frate    = $this->get($from);
+        $trate    = $this->get($to);
+        $base     = $this->data['base'];
 
-		// Cross conversion
-		if ($from != $base) {
+        // Cross conversion
+        if ($from != $base) {
             $new   = $trate * ( 1 / $frate );
             $trate = round($new, 6);
         }
 
-		// Return formatted value
+        // Return formatted value
         return array(
-        	'value'    => $value * $trate,
-        	'format'   => $currency['format'],
-        	'decimal'  => $currency['decimal'],
-        	'thousand' => $currency['thousand']
+            'value'    => $value * $trate,
+            'format'   => $currency['format'],
+            'decimal'  => $currency['decimal'],
+            'thousand' => $currency['thousand']
         );
-	}
+    }
 
 }

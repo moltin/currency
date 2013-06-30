@@ -38,7 +38,7 @@ class Session implements \Moltin\Currency\StorageInterface
     public function get($code)
     {
         // Not found
-    	if ( ! isset($_SESSION['currency'][$code])) {
+        if ( ! isset($_SESSION['currency'][$code])) {
             throw new StorageException('Currency ('.$to.') not found');
         }
 
@@ -54,7 +54,7 @@ class Session implements \Moltin\Currency\StorageInterface
 
     public function remove($id)
     {
-    	unset($_SESSION['currency'][$code]);
+        unset($_SESSION['currency'][$code]);
 
         return $this;
     }

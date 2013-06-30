@@ -25,31 +25,31 @@ use Moltin\Currency\Exception\CurrencyException;
 
 class File implements \Moltin\Currency\CurrenciesInterface
 {
-	public $available = array(
-	    'GBP' => array(
-	        'format'      => '&pound;{price}',
-	        'decimal'     => '.',
-	        'thousand'    => ','
-	    ),
-	    'USD' => array(
-	        'format'      => '${price}',
-	        'decimal'     => '.',
-	        'thousand'    => ','
-	    ),
-	    'EUR' => array(
-	        'format'      => '&euro;{price}',
-	        'decimal'     => ',',
-	        'thousand'    => ' '
-	    )
-	);
+    public $available = array(
+        'GBP' => array(
+            'format'      => '&pound;{price}',
+            'decimal'     => '.',
+            'thousand'    => ','
+        ),
+        'USD' => array(
+            'format'      => '${price}',
+            'decimal'     => '.',
+            'thousand'    => ','
+        ),
+        'EUR' => array(
+            'format'      => '&euro;{price}',
+            'decimal'     => ',',
+            'thousand'    => ' '
+        )
+    );
 
-	public function get($code)
-	{
-		if ( ! isset($this->available[$code])) {
-			throw new CurrencyException('Currency ('.$code.') not found');
-		}
+    public function get($code)
+    {
+        if ( ! isset($this->available[$code])) {
+            throw new CurrencyException('Currency ('.$code.') not found');
+        }
 
-		return $this->available[$code];
-	}
+        return $this->available[$code];
+    }
 
 }
