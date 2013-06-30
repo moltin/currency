@@ -45,7 +45,7 @@ class File implements \Moltin\Currency\CurrenciesInterface
 
 	public function get($code)
 	{
-		if ( ! isset($this->available[$code]) ) {
+		if ( ! isset($this->available[$code])) {
 			throw new CurrencyException('Currency ('.$code.') not found');
 		}
 

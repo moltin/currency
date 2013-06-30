@@ -30,7 +30,7 @@ class Session implements \Moltin\Currency\StorageInterface
         session_id() or session_start();
 
         // Create default item
-        if ( ! isset($_SESSION['currency']) ) {
+        if ( ! isset($_SESSION['currency'])) {
             $_SESSION['currency'] = array();
         }
     }
@@ -38,7 +38,7 @@ class Session implements \Moltin\Currency\StorageInterface
     public function get($code)
     {
         // Not found
-    	if ( ! isset($_SESSION['currency'][$code]) ) {
+    	if ( ! isset($_SESSION['currency'][$code])) {
             return;
         }
 

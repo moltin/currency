@@ -72,7 +72,7 @@ class Currency
         $value    = $this->value;
 
         // Get selected currency
-        if ( $currency = $this->exchange->convert($currency, $code, $value) ) {
+        if ($currency = $this->exchange->convert($currency, $code, $value)) {
 
             // Assign new values
             $this->value   =  $currency['value'];
@@ -157,7 +157,7 @@ class Currency
         $decimal = $this->data['decimal'];
 
         // Format
-        $formatted = ( round(( $value * 2 ), 0) / 2 );
+        $formatted = (round($value * 2, 0) / 2);
         $formatted = number_format($formatted, 2, $decimal, false);
 
         // Assign it

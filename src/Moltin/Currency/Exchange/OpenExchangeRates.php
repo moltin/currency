@@ -41,9 +41,9 @@ class OpenExchangeRates implements \Moltin\Currency\ExchangeInterface
 		$this->currencies = $currencies;
 
         // Loop and assign arguments
-        if ( $args !== null and is_array($args) ) {
-            foreach ( $args as $key => $value ) {
-                if ( isset($this->data[$key]) ) { $this->data[$key] = $value; }
+        if ($args !== null and is_array($args)) {
+            foreach ($args as $key => $value) {
+                if (isset($this->data[$key])) $this->data[$key] = $value;
             }
         }
 	}
@@ -55,19 +55,17 @@ class OpenExchangeRates implements \Moltin\Currency\ExchangeInterface
 		$base = $this->data['base'];
 
 		// Loop and store
-		foreach ( $json->rates as $code => $rate )
+		foreach ($json->rates as $code => $rate)
 		{
 			// Check we need this
-            if ( ! array_key_exists($code, $this->currencies->available) ) {
-            	continue;
-            }
+            if ( ! array_key_exists($code, $this->currencies->available)) continue;
 
             // Multiplier
             $multi = 1;
 
             // Do we need to cross-convert?
             if ($json->base != $base) {
-                $new   = ( $rate * ( 1 / $json->rates->$base ) );
+                $new   = $rate * (1 / $json->rates->$base);
                 $multi = round($new, 6);
             }
 
@@ -93,14 +91,10 @@ class OpenExchangeRates implements \Moltin\Currency\ExchangeInterface
 		$base     = $this->data['base'];
 
 		// Check we got from
-		if ( $frate === null ) {
-			throw new ExchangeException('Currency ('.$from.') not found');
-		}
+		if ($frate === null) throw new ExchangeException('Currency ('.$from.') not found');
 
 		// Check we got to
-		if ( $trate === null ) {
-			throw new ExchangeException('Currency ('.$to.') not found');
-		}
+		if ($trate === null) throw new ExchangeException('Currency ('.$to.') not found');
 
 		// Cross conversion
 		if ($from != $base) {
@@ -110,7 +104,7 @@ class OpenExchangeRates implements \Moltin\Currency\ExchangeInterface
 
 		// Return formatted value
         return array(
-        	'value'    => ( $value * $trate ),
+        	'value'    => $value * $trate,
         	'format'   => $currency['format'],
         	'decimal'  => $currency['decimal'],
         	'thousand' => $currency['thousand']
@@ -124,7 +118,7 @@ class OpenExchangeRates implements \Moltin\Currency\ExchangeInterface
         $url = $this->url.$this->data['app_id'];
 
         // Check key
-        if ( ! isset($this->data['app_id']) or $this->data['app_id'] == '' ) {
+        if ( ! isset($this->data['app_id']) or $this->data['app_id'] == '') {
         	throw new CurrencyException('No App ID Set');
         }
 
@@ -138,9 +132,7 @@ class OpenExchangeRates implements \Moltin\Currency\ExchangeInterface
         $json = json_decode($data);
 
         // Error check
-        if ( isset($json->error) ) {
-        	throw new CurrencyException($json->error);
-        }
+        if (isset($json->error)) throw new CurrencyException($json->error);
 
         return $json;
 	}

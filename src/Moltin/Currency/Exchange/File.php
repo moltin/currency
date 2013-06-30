@@ -39,9 +39,9 @@ class File implements \Moltin\Currency\ExchangeInterface
 		$this->currencies = $currencies;
 
         // Loop and assign arguments
-        if ( $args !== null and is_array($args) ) {
-            foreach ( $args as $key => $value ) {
-                if ( isset($this->data[$key]) ) { $this->data[$key] = $value; }
+        if ($args !== null and is_array($args)) {
+            foreach ($args as $key => $value) {
+                if (isset($this->data[$key])) $this->data[$key] = $value;
             }
         }
 
@@ -71,24 +71,20 @@ class File implements \Moltin\Currency\ExchangeInterface
 		$base     = $this->data['base'];
 
 		// Check we got from
-		if ( $frate === null ) {
-			throw new ExchangeException('Currency ('.$from.') not found');
-		}
+		if ($frate === null) throw new ExchangeException('Currency ('.$from.') not found');
 
 		// Check we got to
-		if ( $trate === null ) {
-			throw new ExchangeException('Currency ('.$to.') not found');
-		}
+		if ($trate === null) throw new ExchangeException('Currency ('.$to.') not found');
 
 		// Cross conversion
 		if ($from != $base) {
-            $new   = ( $trate * ( 1 / $frate ) );
+            $new   = $trate * ( 1 / $frate );
             $trate = round($new, 6);
         }
 
 		// Return formatted value
         return array(
-        	'value'    => ( $value * $trate ),
+        	'value'    => $value * $trate,
         	'format'   => $currency['format'],
         	'decimal'  => $currency['decimal'],
         	'thousand' => $currency['thousand']
