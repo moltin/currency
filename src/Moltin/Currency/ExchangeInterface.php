@@ -23,7 +23,7 @@ namespace Moltin\Currency;
 
 interface ExchangeInterface
 {
-    public function __construct(StorageInterface $store, CurrenciesInterface $currencies, $args = array());
+    public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array());
     
     public function update();
 
