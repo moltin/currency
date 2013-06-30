@@ -25,7 +25,6 @@ use Moltin\Currency\Exception\CurrencyException;
 
 class File implements \Moltin\Currency\CurrenciesInterface
 {
-
 	public $available = array(
 	    'GBP' => array(
 	        'format'      => '&pound;{price}',
