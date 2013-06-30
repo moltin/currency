@@ -21,6 +21,8 @@
 
 namespace Moltin\Currency\Exchange;
 
+use Moltin\Currency\StorageInterface;
+use Moltin\Currency\CurrenciesInterface;
 use Moltin\Currency\Exception\CurrencyException;
 use Moltin\Currency\Exception\ExchangeException;
 
@@ -33,7 +35,7 @@ class File implements \Moltin\Currency\ExchangeInterface
 		'base'      => 'GBP'
 	);
 
-	public function __construct(\Moltin\Currency\StorageInterface $store, \Moltin\Currency\CurrenciesInterface $currencies, $args = array())
+	public function __construct(StorageInterface $store, CurrenciesInterface $currencies, $args = array())
 	{
 		// Assign variables
 		$this->store      = $store;
