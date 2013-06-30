@@ -21,13 +21,14 @@
 
 namespace Moltin\Currency\Exchange;
 
+use Guzzle\Http\Client;
 use Moltin\Currency\StorageInterface;
 use Moltin\Currency\CurrenciesInterface;
 use Moltin\Currency\Exception\ExchangeException;
 
 class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
 {
-	protected $url  =  'http://openexchangerates.org/api/latest.json?app_id=';
+	protected $url  =  'http://openexchangerates.org/api/latest.json?app_id={app_id}';
 	protected $data =  array(
 		'base'      => 'GBP',
 		'app_id'    => ''
@@ -40,7 +41,7 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 		$base = $this->data['base'];
 
 		// Loop and store
-		foreach ($json->rates as $code => $rate)
+		foreach ($json['rates'] as $code => $rate)
 		{
 			// Check we need this
             if ( ! array_key_exists($code, $this->currencies->available)) continue;
@@ -50,7 +51,7 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 
             // Do we need to cross-convert?
             if ($json->base != $base) {
-                $new   = $rate * (1 / $json->rates->$base);
+                $new   = $rate * (1 / $json['rates'][$base]);
                 $multi = round($new, 6);
             }
 
@@ -86,25 +87,19 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 
 	protected function download()
 	{
-		// Variables
-        $url = $this->url.$this->data['app_id'];
-
         // Check key
         if ( ! isset($this->data['app_id']) or $this->data['app_id'] == '') {
         	throw new ExchangeException('No App ID Set');
         }
 
-        // Get data
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $data = curl_exec($ch);
-        curl_close($ch);
+        $request = new Client($this->url, array(
+            'app_id' => $this->data['app_id']
+        ));
 
-        // Convert
-        $json = json_decode($data);
+        $json = $request->get()->send()->json();
 
         // Error check
-        if (isset($json->error)) throw new ExchangeException($json->error);
+        if (isset($json['error'])) throw new ExchangeException($json['error']);
 
         return $json;
 	}
