@@ -37,7 +37,7 @@ class OpenExchangeRates implements \Moltin\Currency\ExchangeInterface
 		'app_id'    => ''
 	);
 
-	public function __construct(StorageInterface $store, CurrenciesInterface $currencies, $args = array())
+	public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array())
 	{
 		// Assign variables
 		$this->store      = $store;
