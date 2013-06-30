@@ -21,7 +21,7 @@ Add the following to your project `composer.json` file
     }
 }
 ```
-When you're done just run `php composer install` and the package is ready to be used.
+When you're done just run `php composer.phar install` and the package is ready to be used.
 
 ## Usage
 Below is a basic usage guide for this package.
