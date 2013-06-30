@@ -74,12 +74,6 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 		$trate    = $this->store->get($to);
 		$base     = $this->data['base'];
 
-		// Check we got from
-		if ($frate === null) throw new ExchangeException('Currency ('.$from.') not found');
-
-		// Check we got to
-		if ($trate === null) throw new ExchangeException('Currency ('.$to.') not found');
-
 		// Cross conversion
 		if ($from != $base) {
             $new   = ( $trate * ( 1 / $frate ) );
