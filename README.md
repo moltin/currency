@@ -23,13 +23,6 @@ Add the following to your project `composer.json` file
 ```
 When you're done just run `php composer install` and the package is ready to be used.
 
-### Overriding the config
-Overriding the default configurations is done in a published config file. You can create it by typing:
-
-```
-$ php artisan config:publish moltin/currency
-```
-
 ## Usage
 Below is a basic usage guide for this package.
 
