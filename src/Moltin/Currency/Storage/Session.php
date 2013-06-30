@@ -25,7 +25,7 @@ use Moltin\Currency\Exception\StorageException;
 class Session implements \Moltin\Currency\StorageInterface
 {
     
-    public function __construct($args = array())
+    public function __construct()
     {
         session_id() or session_start();
 

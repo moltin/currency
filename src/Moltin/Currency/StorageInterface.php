@@ -23,7 +23,7 @@ namespace Moltin\Currency;
 
 interface StorageInterface
 {
-    public function __construct($args = array());
+    public function __construct();
 
     public function get($code);
 
