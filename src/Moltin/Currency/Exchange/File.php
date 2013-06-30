@@ -26,7 +26,7 @@ use Moltin\Currency\CurrenciesInterface;
 use Moltin\Currency\Exception\CurrencyException;
 use Moltin\Currency\Exception\ExchangeException;
 
-class File implements \Moltin\Currency\ExchangeInterface
+class File extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
 {
 
 	protected $store;
@@ -34,23 +34,6 @@ class File implements \Moltin\Currency\ExchangeInterface
 	protected $data =  array(
 		'base'      => 'GBP'
 	);
-
-	public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array())
-	{
-		// Assign variables
-		$this->store      = $store;
-		$this->currencies = $currencies;
-
-        // Loop and assign arguments
-        foreach ($args as $key => $value) {
-            if (isset($this->data[$key])) $this->data[$key] = $value;
-        }
-
-        // Assign base exchange rates
-        $this->store->insertUpdate('GBP', 1.00);
-        $this->store->insertUpdate('EUR', 1.180573);
-        $this->store->insertUpdate('USD', 1.551257);
-	}
 
 	public function update()
 	{
