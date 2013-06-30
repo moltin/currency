@@ -39,7 +39,7 @@ class Session implements \Moltin\Currency\StorageInterface
     {
         // Not found
     	if ( ! isset($_SESSION['currency'][$code])) {
-            return;
+            throw new StorageException('Currency ('.$to.') not found');
         }
 
         return $_SESSION['currency'][$code];
