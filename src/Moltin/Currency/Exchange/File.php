@@ -42,10 +42,8 @@ class File implements \Moltin\Currency\ExchangeInterface
 		$this->currencies = $currencies;
 
         // Loop and assign arguments
-        if (is_array($args)) {
-            foreach ($args as $key => $value) {
-                if (isset($this->data[$key])) $this->data[$key] = $value;
-            }
+        foreach ($args as $key => $value) {
+            if (isset($this->data[$key])) $this->data[$key] = $value;
         }
 
         // Assign base exchange rates
