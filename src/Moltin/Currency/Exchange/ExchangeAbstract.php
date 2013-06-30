@@ -24,7 +24,7 @@ namespace Moltin\Currency\Exchange;
 use Moltin\Currency\StorageInterface;
 use Moltin\Currency\CurrenciesInterface;
 
-class ExchangeAbstract
+abstract class ExchangeAbstract
 {
     public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array())
     {
