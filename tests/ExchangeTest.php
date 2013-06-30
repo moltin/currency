@@ -28,16 +28,16 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
         $rate = $this->exchange->get('USD');
 
         // Loop and test
-        for ( $i = 0; $i < $this->tests; $i++ ) {
+        for ($i = 0; $i < $this->tests; $i++) {
 
             // Build value
-            $value = ( rand($this->start, $this->end) / 100 );
+            $value = rand($this->start, $this->end) / 100;
 
             // Setup
             $currency = new Currency($this->exchange);
 
             // Assert it
-            $this->assertEquals(( $value * $rate ), $currency->convert($value)->to('USD')->value());
+            $this->assertEquals($value * $rate, $currency->convert($value)->to('USD')->value());
         }
     }
 
@@ -47,16 +47,16 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
         $rate = $this->exchange->get('USD');
 
         // Loop and test
-        for ( $i = 0; $i < $this->tests; $i++ ) {
+        for ($i = 0; $i < $this->tests; $i++) {
 
             // Build value
-            $value = ( rand($this->start, $this->end) / 100 );
+            $value = rand($this->start, $this->end) / 100;
 
             // Setup
             $currency = new Currency($this->exchange);
 
             // Assert it
-            $this->assertEquals('$'.number_format(( $value * $rate ), 2), $currency->convert($value)->to('USD')->format());
+            $this->assertEquals('$'.number_format($value * $rate, 2), $currency->convert($value)->to('USD')->format());
         }
     }
 

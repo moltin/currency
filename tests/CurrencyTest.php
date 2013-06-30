@@ -27,10 +27,10 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
     public function testValue()
     {
         // Loop and test
-        for ( $i = 0; $i < $this->tests; $i++ ) {
+        for ($i = 0; $i < $this->tests; $i++) {
 
             // Build value
-            $value = ( rand($this->start, $this->end) / 100 );
+            $value = rand($this->start, $this->end) / 100;
 
             // Setup
             $currency = new Currency($this->exchange);
@@ -46,7 +46,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
         for ( $i = 0; $i < $this->tests; $i++ ) {
 
             // Build value
-            $value = ( rand($this->start, $this->end) / 100 );
+            $value = rand($this->start, $this->end) / 100;
 
             // Setup
             $currency = new Currency($this->exchange);
