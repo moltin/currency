@@ -47,7 +47,6 @@ class File extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterfac
 
 	public function convert($from, $to, $value)
 	{
-
 		// Variables
 		$currency = $this->currencies->get($to);
 		$frate    = $this->store->get($from);

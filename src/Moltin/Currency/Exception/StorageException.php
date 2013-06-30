@@ -27,6 +27,4 @@ namespace Moltin\Currency\Exception;
 class StorageException extends \Exception
 {
 
-
-
 }

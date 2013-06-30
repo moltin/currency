@@ -26,7 +26,6 @@ use Moltin\Currency\Exception\ExchangeException;
 
 class Currency
 {
-
     protected $exchange;
     protected $original =  0;
     protected $value    =  0;
