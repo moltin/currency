@@ -26,7 +26,7 @@ use Moltin\Currency\CurrenciesInterface;
 use Moltin\Currency\Exception\CurrencyException;
 use Moltin\Currency\Exception\ExchangeException;
 
-class File extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
+class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
 {
     protected $data =  array(
         'base'      => 'GBP'
