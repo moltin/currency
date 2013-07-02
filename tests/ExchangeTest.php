@@ -3,7 +3,7 @@
 use Moltin\Currency\Currency;
 use Moltin\Currency\Storage\Session as SessionStore;
 use Moltin\Currency\Currencies\File as FileCurrencies;
-use Moltin\Currency\Exchange\File as FileExchange;
+use Moltin\Currency\Exchange\Runtime as RuntimeExchange;
 
 class ExchangeTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,7 +16,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
     public function __construct()
     {
         // Create required objects
-        $this->exchange = new FileExchange(new SessionStore, new FileCurrencies, array('base' => 'GBP', 'app_id' => ''));
+        $this->exchange = new RuntimeExchange(new SessionStore, new FileCurrencies, array('base' => 'GBP', 'app_id' => ''));
 
         // Pull down rates
         $this->exchange->update();
