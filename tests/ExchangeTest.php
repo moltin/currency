@@ -15,7 +15,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
     public function __construct()
     {
         // Create required objects
-        $this->exchange = new RuntimeExchange(array('base' => 'GBP', 'app_id' => ''));
+        $this->exchange = new RuntimeExchange(array('app_id' => ''));
     }
 
     public function testGBPtoUSD()

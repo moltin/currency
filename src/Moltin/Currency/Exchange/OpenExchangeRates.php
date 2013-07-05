@@ -30,7 +30,6 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 {
     protected $url  =  'http://openexchangerates.org/api/latest.json?app_id={app_id}';
     protected $data =  array(
-        'base'      => 'GBP',
         'app_id'    => ''
     );
 
