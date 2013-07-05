@@ -27,9 +27,10 @@ class Currency
     protected $original =  0;
     protected $value    =  0;
 
-    public function __construct(ExchangeInterface $exchange)
+    public function __construct(ExchangeInterface $exchange, FormatInterface $format)
     {
         $this->exchange = $exchange;
+        $this->format   = $format;
     }
 
     public function convert($value, $new = true)
