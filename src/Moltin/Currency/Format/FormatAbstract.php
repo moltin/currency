@@ -49,7 +49,7 @@ abstract class FormatAbstract
         return $this;
     }
 
-    public function fifty()
+    public function fifty($value, $code)
     {
         $data = $this->get($code);
 
