@@ -21,9 +21,6 @@
 
 namespace Moltin\Currency;
 
-use Moltin\Currency\Exception\CurrencyException;
-use Moltin\Currency\Exception\ExchangeException;
-
 class Currency
 {
     protected $exchange;
