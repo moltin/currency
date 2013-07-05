@@ -23,7 +23,7 @@ namespace Moltin\Currency\Format;
 
 use Moltin\Currency\Exception\CurrencyException;
 
-class Runtime implements \Moltin\Currency\FormatInterface
+class Runtime extends FormatAbstract implements \Moltin\Currency\FormatInterface
 {
     public $available = array(
         'GBP' => array(
