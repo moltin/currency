@@ -30,7 +30,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
             $value = rand($this->start, $this->end) / 100;
 
             // Setup
-            $currency = new Currency($this->exchange);
+            $currency = new Currency($this->exchange, new RuntimeFormat);
 
             // Assert it
             $this->assertEquals($value * $rate, $currency->convert($value)->to('USD')->value());
