@@ -28,9 +28,7 @@ use Moltin\Currency\Exception\ExchangeException;
 
 class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
 {
-    protected $data =  array(
-        'base'      => 'GBP'
-    );
+    protected $data = array();
 
     public function add($code, $value)
     {
