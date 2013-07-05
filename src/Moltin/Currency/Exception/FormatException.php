@@ -24,7 +24,7 @@ namespace Moltin\Currency\Exception;
 /**
 * Thrown when an error occurs in Currency.
 */
-class CurrencyException extends \Exception
+class FormatException extends \Exception
 {
 
 }
