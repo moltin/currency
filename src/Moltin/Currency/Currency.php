@@ -55,6 +55,7 @@ class Currency
         if ($currency = $this->exchange->convert($this->from, $code, $this->value)) {
 
             // Assign new values
+            $this->original = $this->value;
             $this->value = $currency['value'];
             $this->currency = $code;
 
