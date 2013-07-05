@@ -37,6 +37,11 @@ class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInter
         $this->data[$code] = $value;
     }
 
+    public function update($code, $value)
+    {
+        $this->add($code, $value);
+    }
+
     public function get($code)
     {
         return $this->data[$code];
