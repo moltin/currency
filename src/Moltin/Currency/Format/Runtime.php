@@ -43,6 +43,17 @@ class Runtime implements \Moltin\Currency\FormatInterface
         )
     );
 
+    public function format($value, $as)
+    {
+        $data = $this->get($as);
+
+        $formatted = number_format($value, 2, $data['decimal'], $data['thousand']);
+        $formatted = str_replace('{price}', $formatted, $data['format']);
+
+        return $formatted;
+
+    }
+
     public function get($code)
     {
         if ( ! isset($this->available[$code])) {
