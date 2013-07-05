@@ -32,16 +32,6 @@ class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInter
         'base'      => 'GBP'
     );
 
-    public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array())
-    {
-        parent::__construct($store, $currencies, $args);
-
-        // Assign base exchange rates
-        $this->store->insertUpdate('GBP', 1.00);
-        $this->store->insertUpdate('EUR', 1.180573);
-        $this->store->insertUpdate('USD', 1.551257); 
-    }
-
     public function convert($from, $to, $value)
     {
         // Variables
