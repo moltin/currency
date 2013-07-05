@@ -15,6 +15,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->exchange = new RuntimeExchange;
+        $this->format   = new RuntimeFormat;
     }
 
     public function tearDown()
@@ -32,7 +33,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             $value = rand($this->start, $this->end) / 100;
 
             // Setup
-            $currency = new Currency($this->exchange, new RuntimeFormat);
+            $currency = new Currency($this->exchange, $this->format);
 
             // Assert it
             $this->assertEquals($value, $currency->convert($value)->value());

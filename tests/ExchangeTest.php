@@ -16,6 +16,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
     {
         // Create required objects
         $this->exchange = new RuntimeExchange;
+        $this->format   = new RuntimeFormat;
     }
 
     public function testGBPtoUSD()
@@ -30,7 +31,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
             $value = rand($this->start, $this->end) / 100;
 
             // Setup
-            $currency = new Currency($this->exchange, new RuntimeFormat);
+            $currency = new Currency($this->exchange, $this->format);
 
             // Assert it
             $this->assertEquals($value * $rate, $currency->convert($value)->to('USD')->value());
