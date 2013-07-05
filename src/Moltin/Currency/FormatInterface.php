@@ -26,4 +26,13 @@ interface FormatInterface
     public function exists($code);
 
     public function get($code);
+
+    public function format($value, $as);
+
+    public function zeros($value, $code);
+
+    public function nines($value, $code);
+
+    public function fifty($value, $code);
+
 }
