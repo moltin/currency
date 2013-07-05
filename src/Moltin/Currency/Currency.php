@@ -54,7 +54,7 @@ class Currency
     public function to($code)
     {
         // Get selected currency
-        if ($value = $this->exchange->convert($this->currency, $code, $this->value)) {
+        if ($value = $this->exchange->convert($this->value, $this->currency, $code)) {
 
             // Assign new values
             $this->original = $this->value;
