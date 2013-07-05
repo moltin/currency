@@ -23,5 +23,7 @@ namespace Moltin\Currency;
 
 interface FormatInterface
 {
+    public function exists($code);
+
     public function get($code);
 }
