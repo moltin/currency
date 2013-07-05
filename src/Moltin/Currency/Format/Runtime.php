@@ -52,6 +52,11 @@ class Runtime implements \Moltin\Currency\FormatInterface
         return $this->available[$code];
     }
 
+    public function exists($code)
+    {
+        return array_key_exists($code, $this->available);
+    }
+
     public function add($code, $format, $decimal, $thousand)
     {
         $this->available[$code] = array(
