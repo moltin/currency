@@ -1,8 +1,7 @@
 <?php
 
 use Moltin\Currency\Currency;
-use Moltin\Currency\Storage\Session as SessionStore;
-use Moltin\Currency\Currencies\Runtime as RuntimeCurrencies;
+use Moltin\Currency\Format\Runtime as RuntimeFormat;
 use Moltin\Currency\Exchange\Runtime as RuntimeExchange;
 
 class ExchangeTest extends \PHPUnit_Framework_TestCase
@@ -16,10 +15,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
     public function __construct()
     {
         // Create required objects
-        $this->exchange = new RuntimeExchange(new SessionStore, new RuntimeCurrencies, array('base' => 'GBP', 'app_id' => ''));
-
-        // Pull down rates
-        $this->exchange->update();
+        $this->exchange = new RuntimeExchange(array('base' => 'GBP', 'app_id' => ''));
     }
 
     public function testGBPtoUSD()
@@ -53,7 +49,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
             $value = rand($this->start, $this->end) / 100;
 
             // Setup
-            $currency = new Currency($this->exchange);
+            $currency = new Currency($this->exchange, new RuntimeFormat);
 
             // Assert it
             $this->assertEquals('$'.number_format($value * $rate, 2), $currency->convert($value)->to('USD')->format());

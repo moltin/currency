@@ -1,8 +1,7 @@
 <?php
 
 use Moltin\Currency\Currency;
-use Moltin\Currency\Storage\Session as SessionStore;
-use Moltin\Currency\Currencies\Runtime as RuntimeCurrencies;
+use Moltin\Currency\Format\Runtime as RuntimeFormat;
 use Moltin\Currency\Exchange\Runtime as RuntimeExchange;
 
 class CurrencyTest extends \PHPUnit_Framework_TestCase
@@ -15,7 +14,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->exchange = new RuntimeExchange(new SessionStore, new RuntimeCurrencies, array('base' => 'GBP', 'app_id' => ''));
+        $this->exchange = new RuntimeExchange(array('app_id' => ''));
     }
 
     public function tearDown()
@@ -33,7 +32,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             $value = rand($this->start, $this->end) / 100;
 
             // Setup
-            $currency = new Currency($this->exchange);
+            $currency = new Currency($this->exchange, new RuntimeFormat);
 
             // Assert it
             $this->assertEquals($value, $currency->convert($value)->value());
@@ -49,7 +48,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             $value = rand($this->start, $this->end) / 100;
 
             // Setup
-            $currency = new Currency($this->exchange);
+            $currency = new Currency($this->exchange, new RuntimeFormat);
 
             // Assert it
             $this->assertEquals('&pound;'.number_format($value, 2), $currency->convert($value)->format());
