@@ -21,7 +21,7 @@
 
 namespace Moltin\Currency;
 
-interface CurrenciesInterface
+interface FormatInterface
 {
     public function get($code);
 }
