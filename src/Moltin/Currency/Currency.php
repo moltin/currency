@@ -88,50 +88,17 @@ class Currency
 
     public function zeros()
     {
-        // Variables
-        $value   = $this->value;
-        $decimal = $this->data['decimal'];
-
-        // Format
-        $formatted = ceil($value).$decimal.'00';
-        $formatted = number_format($formatted, 2, $decimal, false);
-
-        // Assign it
-        $this->value = (float)$formatted;
-
-        return $this;
+        return $this->format->zeros($this->value, $this->currency);
     }
 
     public function nines()
     {
-        // Variables
-        $value   = $this->value;
-        $decimal = $this->data['decimal'];
-
-        // Format
-        $formatted = ceil($value) - 0.01;
-        $formatted = number_format($formatted, 2, $decimal, false);
-
-        // Assign it
-        $this->value = (float)$formatted;
-
-        return $this;
+        return $this->format->nines($this->value, $this->currency);
     }
 
     public function fifty()
     {
-        // Variables
-        $value   = $this->value;
-        $decimal = $this->data['decimal'];
-
-        // Format
-        $formatted = (round($value * 2, 0) / 2);
-        $formatted = number_format($formatted, 2, $decimal, false);
-
-        // Assign it
-        $this->value = (float)$formatted;
-
-        return $this;
+        return $this->format->fifty($this->value, $this->currency);
     }
 
     public function reset()
