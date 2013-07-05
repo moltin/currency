@@ -56,9 +56,6 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
         // Loop and store
         foreach ($this->stored['rates'] as $code => $rate)
         {
-            // Check we need this
-            if ( ! array_key_exists($code, $this->currencies->available)) continue;
-
             // Multiplier
             $multi = 1;
 
