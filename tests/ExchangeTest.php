@@ -38,7 +38,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
             $currency = new Currency($this->exchange, $this->format);
 
             // Assert it
-            $this->assertEquals($value * $rate, $currency->convert($value)->to('USD')->value());
+            $this->assertEquals($value * $rate, $currency->convert($value)->from('GBP')->to('USD')->value());
         }
     }
 
@@ -57,7 +57,7 @@ class ExchangeTest extends \PHPUnit_Framework_TestCase
             $currency = new Currency($this->exchange, new RuntimeFormat);
 
             // Assert it
-            $this->assertEquals('$'.number_format($value * $rate, 2), $currency->convert($value)->to('USD')->format());
+            $this->assertEquals('$'.number_format($value * $rate, 2), $currency->convert($value)->from('GBP')->to('USD')->format());
         }
     }
 
