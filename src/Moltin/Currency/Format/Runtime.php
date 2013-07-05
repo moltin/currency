@@ -21,6 +21,8 @@
 
 namespace Moltin\Currency\Format;
 
+use Moltin\Currency\Exception\FormatException;
+
 class Runtime extends FormatAbstract implements \Moltin\Currency\FormatInterface
 {
     public $available = array(
@@ -55,7 +57,7 @@ class Runtime extends FormatAbstract implements \Moltin\Currency\FormatInterface
     public function get($code)
     {
         if ( ! isset($this->available[$code])) {
-            throw new CurrencyException('Currency ('.$code.') not found');
+            throw new FormatException('Currency ('.$code.') not found');
         }
 
         return $this->available[$code];
