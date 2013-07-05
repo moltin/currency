@@ -65,17 +65,7 @@ class Currency
 
     public function format()
     {
-        // Variables
-        $value    = $this->value;
-        $format   = $this->data['format'];
-        $decimal  = $this->data['decimal'];
-        $thousand = $this->data['thousand'];
-
-        // Format
-        $formatted = number_format($value, 2, $decimal, $thousand);
-        $formatted = str_replace('{price}', $formatted, $format);
-
-        return $formatted;
+        return $this->format->format($this->value, $this->currency);
     }
 
     public function value()
