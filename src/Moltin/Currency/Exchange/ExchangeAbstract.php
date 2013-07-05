@@ -26,15 +26,9 @@ use Moltin\Currency\CurrenciesInterface;
 
 abstract class ExchangeAbstract
 {
-    protected $store;
-    protected $currencies;
     
-    public function __construct(StorageInterface $store, CurrenciesInterface $currencies, array $args = array())
+    public function __construct(array $args = array())
     {
-        // Assign variables
-        $this->store      = $store;
-        $this->currencies = $currencies;
-
         // Loop and assign arguments
         foreach ($args as $key => $value) {
             if (isset($this->data[$key])) $this->data[$key] = $value;
