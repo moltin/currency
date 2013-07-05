@@ -16,6 +16,10 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
     {
         $this->exchange = new RuntimeExchange;
         $this->format   = new RuntimeFormat;
+
+        $this->exchange->add('GBP', 1.00);
+        $this->exchange->add('EUR', 1.180573);
+        $this->exchange->add('USD', 1.551257); 
     }
 
     public function tearDown()
