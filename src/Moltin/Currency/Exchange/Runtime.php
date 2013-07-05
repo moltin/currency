@@ -42,6 +42,11 @@ class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInter
         $this->add($code, $value);
     }
 
+    public function remove($code)
+    {
+        unset($this->data[$code]);
+    }
+
     public function get($code)
     {
         return $this->data[$code];
