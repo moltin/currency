@@ -61,6 +61,11 @@ class Runtime implements \Moltin\Currency\FormatInterface
         );
     }
 
+    public function update($code, $format, $decimal, $thousand)
+    {
+        $this->add($code, $format, $decimal, $thousand);
+    }
+
     public function remove($code)
     {
         unset($this->available[$code]);
