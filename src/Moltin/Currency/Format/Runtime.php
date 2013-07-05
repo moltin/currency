@@ -52,4 +52,12 @@ class Runtime implements \Moltin\Currency\FormatInterface
         return $this->available[$code];
     }
 
+    public function add($code, $format, $decimal, $thousand)
+    {
+        $this->available[$code] = array(
+            'format' => $format,
+            'decimal' => $decimal,
+            'thousand' => $thousand
+        );
+    }
 }
