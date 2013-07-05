@@ -26,15 +26,6 @@ use Moltin\Currency\CurrenciesInterface;
 
 abstract class ExchangeAbstract
 {
-    
-    public function __construct(array $args = array())
-    {
-        // Loop and assign arguments
-        foreach ($args as $key => $value) {
-            if (isset($this->data[$key])) $this->data[$key] = $value;
-        }
-    }
-
     public function update()
     {
         return $this;

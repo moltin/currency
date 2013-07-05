@@ -23,8 +23,6 @@ namespace Moltin\Currency;
 
 interface ExchangeInterface
 {
-    public function __construct(array $args = array());
-
     public function get($code);
 
     public function update();

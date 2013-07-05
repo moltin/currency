@@ -14,7 +14,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->exchange = new RuntimeExchange(array('app_id' => ''));
+        $this->exchange = new RuntimeExchange;
     }
 
     public function tearDown()
