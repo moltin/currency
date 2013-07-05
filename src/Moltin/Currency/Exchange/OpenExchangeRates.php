@@ -36,14 +36,20 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 
     private $data = array();
 
+    public function __construct(array $args = array())
+    {
+        parent::__construct($args);
+
+        $this->download();
+    }
+
     public function update()
     {
         // Variables
-        $json = $this->download();
         $base = $this->data['base'];
 
         // Loop and store
-        foreach ($json['rates'] as $code => $rate)
+        foreach ($this->data['rates'] as $code => $rate)
         {
             // Check we need this
             if ( ! array_key_exists($code, $this->currencies->available)) continue;
@@ -52,13 +58,10 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
             $multi = 1;
 
             // Do we need to cross-convert?
-            if ($json->base != $base) {
-                $new   = $rate * (1 / $json['rates'][$base]);
+            if ($this->data['base'] != $base) {
+                $new   = $rate * (1 / $this->data['rates'][$base]);
                 $multi = round($new, 6);
             }
-
-            // Store
-            $this->store->insertUpdate($code, $multi);
         }
 
         return $this;
@@ -106,8 +109,6 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
         if (isset($json['error'])) throw new ExchangeException($json['error']);
 
         $this->data = $json;
-
-        return $json;
     }
 
 }
