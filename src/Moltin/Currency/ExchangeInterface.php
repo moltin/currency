@@ -25,7 +25,5 @@ interface ExchangeInterface
 {
     public function get($code);
 
-    public function update();
-
     public function convert($from, $to, $value);
 }
