@@ -32,6 +32,11 @@ class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInter
         'base'      => 'GBP'
     );
 
+    public function add($code, $value)
+    {
+        $this->data[$code] = $value;
+    }
+
     public function get($code)
     {
         return $this->data[$code];
@@ -50,5 +55,4 @@ class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInter
         // Return formatted value
         return $value * $trate;
     }
-
 }
