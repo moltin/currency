@@ -60,4 +60,9 @@ class Runtime implements \Moltin\Currency\FormatInterface
             'thousand' => $thousand
         );
     }
+
+    public function remove($code)
+    {
+        unset($this->available[$code]);
+    }
 }
