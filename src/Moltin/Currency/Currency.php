@@ -26,28 +26,10 @@ class Currency
     protected $exchange;
     protected $original =  0;
     protected $value    =  0;
-    protected $data     =  array(
-        'code'     => 'GBP',
-        'format'   => '&pound;{price}',
-        'decimal'  => '.',
-        'thousand' => ','
-    );
 
-    public function __construct(ExchangeInterface $exchange, array $args = null)
+    public function __construct(ExchangeInterface $exchange)
     {
-        // Assign exchange
         $this->exchange = $exchange;
-
-        // Loop and assign arguments
-        if ($args) {
-
-            foreach ($args as $key => $value) {
-
-                if (isset($this->data[$key])) $this->data[$key] = $value;
-
-            }
-
-        }
     }
 
     public function convert($value, $new = true)
