@@ -49,18 +49,4 @@ class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInter
     {
         return $this->data[$code];
     }
-
-    public function convert($value, $from, $to)
-    {
-        // Variables
-        $frate = $this->get($from);
-        $trate = $this->get($to);
-
-        // Cross conversion
-        $new   = $trate * ( 1 / $frate );
-        $trate = round($new, 6);
-
-        // Return formatted value
-        return $value * $trate;
-    }
 }
