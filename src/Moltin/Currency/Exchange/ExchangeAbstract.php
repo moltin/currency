@@ -26,8 +26,17 @@ use Moltin\Currency\CurrenciesInterface;
 
 abstract class ExchangeAbstract
 {
-    public function update()
+    public function convert($value, $from, $to)
     {
-        return $this;
+        // Variables
+        $frate = $this->get($from);
+        $trate = $this->get($to);
+
+        // Cross conversion
+        $new   = $trate * (1 / $frate);
+        $trate = round($new, 6);
+
+        // Return formatted value
+        return $value * $trate;
     }
 }
