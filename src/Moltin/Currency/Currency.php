@@ -56,6 +56,7 @@ class Currency
 
             // Assign new values
             $this->value = $currency['value'];
+            $this->currency = $code;
 
         }
 
