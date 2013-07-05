@@ -43,6 +43,11 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
         $this->download();
     }
 
+    public function get($code)
+    {
+        return $this->data[$code];
+    }
+
     public function update()
     {
         // Variables
