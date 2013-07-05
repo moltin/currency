@@ -56,7 +56,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             $currency = new Currency($this->exchange, new RuntimeFormat);
 
             // Assert it
-            $this->assertEquals('&pound;'.number_format($value, 2), $currency->convert($value)->format());
+            $this->assertEquals('&pound;'.number_format($value, 2), $currency->convert($value)->from('GBP')->to('GBP')->format());
         }
     }
 
