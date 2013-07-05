@@ -47,27 +47,6 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
         return $this->stored['rates'][$code];
     }
 
-    public function update()
-    {
-        // Variables
-        $base = $this->stored['base'];
-
-        // Loop and store
-        foreach ($this->stored['rates'] as $code => $rate)
-        {
-            // Multiplier
-            $multi = 1;
-
-            // Do we need to cross-convert?
-            if ($this->stored['base'] != $base) {
-                $new   = $rate * (1 / $this->stored['rates'][$base]);
-                $multi = round($new, 6);
-            }
-        }
-
-        return $this;
-    }
-
     public function convert($value, $from, $to)
     {
         // Variables
