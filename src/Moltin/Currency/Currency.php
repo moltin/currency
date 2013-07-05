@@ -50,21 +50,11 @@ class Currency
 
     public function to($code)
     {
-        // Variables
-        $currency = $this->data['code'];
-        $value    = $this->value;
-
         // Get selected currency
-        if ($currency = $this->exchange->convert($currency, $code, $value)) {
+        if ($currency = $this->exchange->convert($this->from, $code, $this->value)) {
 
             // Assign new values
-            $this->value   =  $currency['value'];
-            $this->data    =  array(
-                'code'     => $code,
-                'format'   => $currency['format'],
-                'decimal'  => $currency['decimal'],
-                'thousand' => $currency['thousand']
-            );
+            $this->value = $currency['value'];
 
         }
 
