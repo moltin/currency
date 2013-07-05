@@ -43,6 +43,11 @@ class Currency
         return $clone;
     }
 
+    public function from($code)
+    {
+        $this->from = $code;
+    }
+
     public function to($code)
     {
         // Variables
