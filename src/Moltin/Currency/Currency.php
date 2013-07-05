@@ -47,6 +47,8 @@ class Currency
     public function from($code)
     {
         $this->currency = $code;
+
+        return $this;
     }
 
     public function to($code)
