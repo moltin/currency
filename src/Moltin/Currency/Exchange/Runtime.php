@@ -32,27 +32,23 @@ class Runtime extends ExchangeAbstract implements \Moltin\Currency\ExchangeInter
         'base'      => 'GBP'
     );
 
-    public function convert($from, $to, $value)
+    public function get($code)
+    {
+        return $this->data[$code];
+    }
+
+    public function convert($value, $from, $to)
     {
         // Variables
-        $currency = $this->currencies->get($to);
-        $frate    = $this->get($from);
-        $trate    = $this->get($to);
-        $base     = $this->data['base'];
+        $frate = $this->get($from);
+        $trate = $this->get($to);
 
         // Cross conversion
-        if ($from != $base) {
-            $new   = $trate * ( 1 / $frate );
-            $trate = round($new, 6);
-        }
+        $new   = $trate * ( 1 / $frate );
+        $trate = round($new, 6);
 
         // Return formatted value
-        return array(
-            'value'    => $value * $trate,
-            'format'   => $currency['format'],
-            'decimal'  => $currency['decimal'],
-            'thousand' => $currency['thousand']
-        );
+        return $value * $trate;
     }
 
 }
