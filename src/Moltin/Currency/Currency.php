@@ -76,11 +76,6 @@ class Currency
         return $this->original;
     }
 
-    public function currency()
-    {
-        return $this->data;
-    }
-
     public function zeros()
     {
         return $this->format->zeros($this->value, $this->currency);
@@ -105,24 +100,6 @@ class Currency
     public function setExchange(ExchangeInterface $exchange)
     {
         $this->exchange = $exchange;
-    }
-
-    public function setCurrency(array $currency)
-    {
-        foreach ($currency as $key => $value) {
-
-            if (isset($this->data[$key])) $this->data[$key] = $value;
-
-        }
-
-        $this->reset();
-
-        return $this;
-    }
-    
-    public function __get($property)
-    {
-        return $this->data[$property];
     }
 
     public function __toString()
