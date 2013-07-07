@@ -37,8 +37,6 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 
     public function __construct(array $args = array())
     {
-        parent::__construct($args);
-
         $this->download();
     }
 
