@@ -57,7 +57,7 @@ class Runtime extends FormatAbstract implements \Moltin\Currency\FormatInterface
     public function get($code)
     {
         if ( ! isset($this->available[$code])) {
-            throw new FormatException('Currency ('.$code.') not found');
+            throw new FormatException("Currency '{$code}' not found");
         }
 
         return $this->available[$code];
