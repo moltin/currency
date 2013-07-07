@@ -35,12 +35,10 @@ In this example we're going to use the currencies file, exchange file and sessio
 
 ```php
 use Moltin\Currency\Currency as Currency;
-use Moltin\Currency\Storage\Session as SessionStore;
-use Moltin\Currency\Currencies\File as FileCurrencies;
-use Moltin\Currency\Exchange\File as FileExchange;
+use Moltin\Currency\Format\Runtime as RuntimeFormat;
+use Moltin\Currency\Exchange\OpenExchangeRates as OpenExchange;
 
-$exchange = new FileExchange(new SessionStore, new FileCurrencies, array('base' => 'GBP'));
-$currency = new Currency($exchange);
+$currency = new Currency(new OpenExchange($app_id), new RuntimeFormat);
 ```
 
 ### Setting the value
@@ -48,7 +46,7 @@ Now that you have Currency instantiated, you will now need to tell it what value
 You can do this using the following method.
 
 ```php
-$currency->convert(9.33);
+$currency->convert(9.33)->from('GBP');
 ```
 
 ### Getting the value
@@ -92,10 +90,10 @@ is reset to default to ensure the correct price is assigned.
 
 ```php
 // Returns ~$14.47
-$value = $currency->convert(9.33)->to('USD')->format();
+$value = $currency->convert(9.33)->from('GBP')->to('USD')->format();
 
 // Returns ~14.50
-$value = $currency->convert(9.33)->to('USD')->fifty()->value();
+$value = $currency->convert(9.33)->from('GBP')->to('USD')->fifty()->value();
 ```
 
 ### Resetting the value
