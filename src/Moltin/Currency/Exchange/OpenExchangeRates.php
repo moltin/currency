@@ -41,6 +41,10 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
     {
         $this->download();
 
+        if ( ! isset($this->stored['rates'][$code])) {
+            throw new ExchangeException("No rate for '{$code}'");
+        }
+
         return $this->stored['rates'][$code];
     }
 
