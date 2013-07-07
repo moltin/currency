@@ -48,7 +48,7 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
     protected function download()
     {
         // Check key
-        if ( ! isset($this->data['app_id']) or $this->data['app_id'] == '') {
+        if (empty($this->data['app_id'])) {
             throw new ExchangeException('No App ID Set');
         }
 
