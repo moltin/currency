@@ -35,8 +35,10 @@ abstract class ExchangeAbstract
         $trate = $this->get($to);
 
         // Cross conversion
-        $new   = $trate * (1 / $frate);
-        $trate = round($new, 6);
+        if ($this->base != $from) {
+            $new   = $trate * (1 / $frate);
+            $trate = round($new, 6);
+        }
 
         // Return formatted value
         return $value * $trate;
