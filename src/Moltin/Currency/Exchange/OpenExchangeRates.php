@@ -36,16 +36,19 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
     public function __construct($appId)
     {
         $this->appId = $appId;
-        $this->download();
     }
 
     public function get($code)
     {
+        $this->download();
+
         return $this->stored['rates'][$code];
     }
 
     protected function download()
     {
+        if ( ! empty($this->stored)) return;
+        
         $request = new Client($this->url, array(
             'app_id' => $this->appId
         ));
