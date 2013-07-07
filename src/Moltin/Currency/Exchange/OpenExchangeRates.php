@@ -50,7 +50,8 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
 
     protected function download()
     {
-        if ( ! empty($this->stored)) return;
+        if ( ! empty($this->stored)
+            and $this->base == $this->stored['base']) return;
 
         $request = new Client($this->url, array(
             'app_id' => $this->appId
