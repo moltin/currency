@@ -62,7 +62,19 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
         // Error check
         if (isset($json['error'])) throw new ExchangeException($json['error']);
 
-        $this->stored = $json;
+        $data = $json;
+        $data['base'] = $this->base;
+
+        foreach ($data['rates'] as &$rate)
+        {
+            // Do we need to cross-convert?
+            if ($json['base'] != $this->base) {
+                $new = $rate * (1 / $json['rates'][$this->base]);
+                $rate = round($new, 6);
+            }
+        }
+
+        $this->stored = $data;
     }
 
 }
