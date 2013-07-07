@@ -28,9 +28,8 @@ use Moltin\Currency\Exception\ExchangeException;
 
 class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\ExchangeInterface
 {
-    protected $url  =  'http://openexchangerates.org/api/latest.json?app_id={app_id}';
     private $appId;
-
+    private $url  =  'http://openexchangerates.org/api/latest.json?app_id={app_id}';
     private $stored = array();
 
     public function __construct($appId)
@@ -48,7 +47,7 @@ class OpenExchangeRates extends ExchangeAbstract implements \Moltin\Currency\Exc
     protected function download()
     {
         if ( ! empty($this->stored)) return;
-        
+
         $request = new Client($this->url, array(
             'app_id' => $this->appId
         ));
