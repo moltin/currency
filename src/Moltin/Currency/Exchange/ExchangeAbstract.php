@@ -26,7 +26,7 @@ use Moltin\Currency\CurrenciesInterface;
 
 abstract class ExchangeAbstract
 {
-    private $base = 'USD';
+    protected $base = 'USD';
 
     public function convert($value, $from, $to)
     {
