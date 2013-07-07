@@ -26,6 +26,8 @@ use Moltin\Currency\CurrenciesInterface;
 
 abstract class ExchangeAbstract
 {
+    private $base = 'USD';
+
     public function convert($value, $from, $to)
     {
         // Variables
@@ -38,5 +40,10 @@ abstract class ExchangeAbstract
 
         // Return formatted value
         return $value * $trate;
+    }
+
+    public function setBase($code)
+    {
+        $this->base = $code;
     }
 }
