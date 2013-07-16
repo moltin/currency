@@ -107,4 +107,12 @@ class Currency
         return $this->format();
     }
 
+    public function __get($property)
+    {
+        if ($property == 'code') return $this->currency;
+        
+        $currency = $this->format->get($this->currency);
+
+        return $currency[$property];
+    }
 }
