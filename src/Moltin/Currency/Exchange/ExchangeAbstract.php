@@ -43,9 +43,4 @@ abstract class ExchangeAbstract
         // Return formatted value
         return $value * $trate;
     }
-
-    public function setBase($code)
-    {
-        $this->base = $code;
-    }
 }
