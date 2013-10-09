@@ -76,19 +76,32 @@ class Currency
         return $this->original;
     }
 
+    public function round()
+    {
+        $this->value = round($this->value, 2);
+
+        return $this;
+    }
+
     public function zeros()
     {
-        return $this->format->zeros($this->value, $this->currency);
+        $this->value = $this->format->zeros($this->value, $this->currency);
+
+        return $this;
     }
 
     public function nines()
     {
-        return $this->format->nines($this->value, $this->currency);
+        $this->value = $this->format->nines($this->value, $this->currency);
+
+        return $this;
     }
 
     public function fifty()
     {
-        return $this->format->fifty($this->value, $this->currency);
+        $this->value = $this->format->fifty($this->value, $this->currency);
+
+        return $this;
     }
 
     public function reset()
