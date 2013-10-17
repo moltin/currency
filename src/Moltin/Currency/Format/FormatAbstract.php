@@ -44,9 +44,7 @@ abstract class FormatAbstract
         $formatted = number_format($formatted, 2, $data['decimal'], false);
 
         // Assign it
-        $this->value = (float)$formatted;
-
-        return $this;
+        return (float)$formatted;
     }
 
     public function fifty($value, $code)
@@ -58,8 +56,6 @@ abstract class FormatAbstract
         $formatted = number_format($formatted, 2, $data['decimal'], false);
 
         // Assign it
-        $this->value = (float)$formatted;
-
-        return $this;
+        return (float)$formatted;
     }
 }
