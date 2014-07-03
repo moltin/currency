@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/moltin/currency.png)](http://travis-ci.org/moltin/currency)
 
 * [Website](http://molt.in)
-* [License](https://github.com/moltin/currency/master/LICENSE)
+* [License](https://github.com/moltin/currency/blob/master/LICENSE)
 * Version: dev
 
 The Moltin currency composer package makes it easy to implement multi-currency pricing into your application and
