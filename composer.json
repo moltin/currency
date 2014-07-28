@@ -29,5 +29,10 @@
         "psr-0": {
             "Moltin": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
