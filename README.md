@@ -17,7 +17,7 @@ Add the following to your project `composer.json` file
 ```
 {
     "require": {
-        "moltin/currency": "dev-master"
+        "moltin/currency": "1.0.*@dev"
     }
 }
 ```
