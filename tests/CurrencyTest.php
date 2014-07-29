@@ -6,8 +6,7 @@ use Moltin\Currency\Exchange\Runtime as RuntimeExchange;
 
 class CurrencyTest extends \PHPUnit_Framework_TestCase
 {
-
-    protected $exchagnge;
+    protected $exchange;
     protected $tests = 100;
     protected $start = 1;       // £0.01
     protected $end   = 1000000; // £10,000.00
