@@ -50,7 +50,7 @@ $currency->convert(9.33)->from('GBP');
 ```
 
 ### Getting the value
-The most basic action you can perform is rertieve the original value back from the method.
+The most basic action you can perform is retrieve the original value back from the method.
 
 ```php
 // Returns 9.33
