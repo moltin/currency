@@ -4,4 +4,17 @@
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+
+    <filter>
+        <whitelist
+                addUncoveredFilesFromWhitelist="true"
+                processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="./tests/coverage/html/"/>
+        <log type="coverage-clover" target="./tests/coverage/coverage.xml"/>
+    </logging>
 </phpunit>
