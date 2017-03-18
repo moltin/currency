@@ -1,5 +1,1 @@
-/vendor/
-.DS_Store
-._*
-Thumbs.db
-Desktop.ini
+vendor
